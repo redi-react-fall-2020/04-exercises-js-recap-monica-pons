@@ -4,7 +4,43 @@
 // sortDirection can be 'asc' or 'desc'
 // Make a shallow copy of the array before sorting it!
 const sortMembers = (team, sortBy, sortDirection) => {
-  return team;
+  const arrayCopy = [...team];
+  arrayCopy.sort((a, b) => {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    var roleA = a.role.toUpperCase(); // ignore upper and lowercase
+    var roleB = b.role.toUpperCase(); // ignore upper and lowercase
+    if (sortBy === "name" && sortDirection === "asc") {
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    } else if (sortBy === "name" && sortDirection === "desc") {
+      if (nameA < nameB) {
+        return 1;
+      }
+      if (nameA > nameB) {
+        return -1;
+      }
+      // names must be equal
+      return 0;
+    } else {
+      if (roleA < roleB) {
+        return -1;
+      }
+      if (roleA > roleB) {
+        return 1;
+      }
+      // names must be equal
+      return 0;
+    }
+  });
+
+  return arrayCopy;
 };
 
 // Exercise 2
